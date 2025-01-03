@@ -3,6 +3,9 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
+const userRoutes = require('./Admin_Module/routes/userRoutes.js');
+const inventoryRoutes = require('./Admin_Module/routes/inventoryRoutes.js');
+const supplierRoutes = require('./Admin_Module/routes/supplierRoutes.js');
 
 dotenv.config();
 
@@ -21,10 +24,11 @@ db.once('open', () => {
   console.log('Connected to MongoDB');
 });
 
-const userRoutes = require('./Admin_Module/routes/userRoutes');
-
 app.use(express.json());
 app.use('/api/users', userRoutes);
+app.use('/api/suppliers', supplierRoutes);
+app.use('/api/inventory', inventoryRoutes);
+
 
 const port = process.env.PORT || 3000;
 

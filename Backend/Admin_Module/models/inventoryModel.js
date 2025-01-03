@@ -1,4 +1,3 @@
-// models/inventoryModel.js
 const mongoose = require('mongoose');
 
 const categorySchema = new mongoose.Schema({
@@ -20,6 +19,10 @@ const itemSchema = new mongoose.Schema({
   category: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Category'
+  },
+  supplier: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Supplier'
   },
   quantity: {
     type: Number,

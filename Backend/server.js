@@ -7,6 +7,7 @@ const userRoutes = require('./Admin_Module/routes/userRoutes.js');
 const inventoryRoutes = require('./Admin_Module/routes/inventoryRoutes.js');
 const supplierRoutes = require('./Admin_Module/routes/supplierRoutes.js');
 const managerRoutes = require('./Manager_Module/routes/index.js');
+const staffRoutes = require('./Staff_Module/routes/index.js');
 
 dotenv.config();
 
@@ -30,6 +31,7 @@ app.use('/api/users', userRoutes);
 app.use('/api/suppliers', supplierRoutes);
 app.use('/api/inventory', inventoryRoutes);
 app.use('/manager', managerRoutes);
+app.use('/staff', staffRoutes);
 
 const port = process.env.PORT || 3000;
 

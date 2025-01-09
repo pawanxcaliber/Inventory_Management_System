@@ -8,6 +8,7 @@ const inventoryRoutes = require('./Admin_Module/routes/inventoryRoutes.js');
 const supplierRoutes = require('./Admin_Module/routes/supplierRoutes.js');
 const managerRoutes = require('./Manager_Module/routes/index.js');
 const staffRoutes = require('./Staff_Module/routes/index.js');
+const reportRoutes = require('./Admin_Module/routes/reportRoutes.js'); // New line
 
 dotenv.config();
 
@@ -30,6 +31,7 @@ app.use(express.json());
 app.use('/api/users', userRoutes);
 app.use('/api/suppliers', supplierRoutes);
 app.use('/api/inventory', inventoryRoutes);
+app.use('/api/reports', reportRoutes); // New line
 app.use('/manager', managerRoutes);
 app.use('/staff', staffRoutes);
 

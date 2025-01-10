@@ -1,10 +1,11 @@
+// src/App.js
 import React from 'react';
-import Login from './common/components/Login';
+import AdminModule from './admin-module';
 
 function App() {
   return (
     <div>
-      <Login />
+      <AdminModule />
     </div>
   );
 }

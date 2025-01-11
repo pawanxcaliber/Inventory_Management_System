@@ -76,3 +76,27 @@ exports.deleteItem = async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 };
+
+exports.linkSupplierToItem = async (req, res) => {
+  try {
+    const itemId = req.params.id;
+    const supplierId = req.body.supplierId;
+
+    const item = await Item.findById(itemId);
+    if (!item) {
+      return res.status(404).json({ message: 'Item not found' });
+    }
+
+    const supplier = await Supplier.findById(supplierId);
+    if (!supplier) {
+      return res.status(404).json({ message: 'Supplier not found' });
+    }
+
+    item.supplier = supplierId;
+    await item.save();
+
+    res.json({ message: 'Supplier linked to item successfully' });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};

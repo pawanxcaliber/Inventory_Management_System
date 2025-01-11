@@ -9,5 +9,6 @@ router.get('/items', inventoryController.getItems);
 router.post('/items', inventoryController.createItem);
 router.put('/items/:id', inventoryController.updateItem);
 router.delete('/items/:id', inventoryController.deleteItem);
+router.put('/items/:id/link-supplier', inventoryController.linkSupplierToItem);
 
 module.exports = router;

@@ -1,0 +1,94 @@
+.inventory-management-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .inventory-management-title {
+    font-weight: bold;
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .inventory-management-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .inventory-management-form label {
+    margin-bottom: 10px;
+  }
+  
+  .inventory-management-form input[type="text"],
+  .inventory-management-form input[type="number"] {
+    width: 100%;
+    height: 40px;
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+  }
+  
+  .inventory-management-form select {
+    width: 100%;
+    height: 40px;
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+  }
+  
+  .inventory-management-form button[type="submit"] {
+    width: 100%;
+    height: 40px;
+    background-color: #4CAF50;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .inventory-management-form button[type="submit"]:hover {
+    background-color: #3e8e41;
+  }
+  
+  .inventory-management-subtitle {
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .inventory-management-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .inventory-management-list-item {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .inventory-management-list-item:last-child {
+    border-bottom: none;
+  }
+  
+  .inventory-management-list-item span {
+    font-weight: bold;
+  }
+  
+  .inventory-management-list-item button {
+    background-color: #4CAF50;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .inventory-management-list-item button:hover {
+    background-color: #3e8e41;
+  }

@@ -24,6 +24,15 @@ exports.createCategory = async (req, res) => {
   }
 };
 
+exports.deleteCategory = async (req, res) => {
+  try {
+    await Category.findByIdAndDelete(req.params.id);
+    res.json({ message: 'Category deleted successfully' });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+
 exports.getItems = async (req, res) => {
   try {
     const items = await Item.find().populate('category').populate('supplier');

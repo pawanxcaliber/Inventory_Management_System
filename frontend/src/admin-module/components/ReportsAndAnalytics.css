@@ -1,0 +1,33 @@
+.reports-and-analytics-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .reports-and-analytics-title {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .sales-report-table, .stock-report-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .sales-report-table th, .stock-report-table th {
+    background-color: #f0f0f0;
+    padding: 10px;
+    border: 1px solid #ddd;
+  }
+  
+  .sales-report-table td, .stock-report-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+  }
+  
+  .sales-report-table tr:nth-child(even), .stock-report-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }

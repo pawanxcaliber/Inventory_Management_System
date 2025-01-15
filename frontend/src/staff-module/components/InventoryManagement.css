@@ -1,0 +1,52 @@
+.inventory-management-container {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .inventory-management-container h1 {
+    font-weight: bold;
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  th, td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+  }
+  
+  th {
+    background-color: #f0f0f0;
+  }
+  
+  td input[type="number"] {
+    width: 50px;
+    height: 30px;
+    padding: 5px;
+    font-size: 16px;
+  }
+  
+  td button[type="submit"] {
+    width: 80px;
+    height: 30px;
+    padding: 5px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  td button[type="submit"]:hover {
+    background-color: #3e8e41;
+  }

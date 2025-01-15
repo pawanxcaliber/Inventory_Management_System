@@ -1,4 +1,4 @@
-// Staff_Module/routes/salesRoutes.js
+// Staff_Module/routes/salesRoutes.js remains the same
 const express = require('express');
 const router = express.Router();
 const salesController = require('../controllers/salesController');

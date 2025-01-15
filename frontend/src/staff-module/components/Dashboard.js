@@ -4,22 +4,19 @@ import { Link } from 'react-router-dom';
 import './Dashboard.css';
 
 const Dashboard = () => {
-  const [orderCount, setOrderCount] = useState(0);
-  const [salesCount, setSalesCount] = useState(0);
   const [itemCount, setItemCount] = useState(0);
+  const [salesCount, setSalesCount] = useState(0);
 
   useEffect(() => {
     const fetchCounts = async () => {
       try {
         const responses = await Promise.all([
-          axios.get('/manager/orders'),
-          axios.get('/manager/sales/get'),
           axios.get('/api/inventory/items'),
+          axios.get('/manager/sales/get'),
         ]);
 
-        setOrderCount(responses[0].data.length);
+        setItemCount(responses[0].data.length);
         setSalesCount(responses[1].data.length);
-        setItemCount(responses[2].data.length);
       } catch (error) {
         console.error(error);
       }
@@ -30,30 +27,23 @@ const Dashboard = () => {
 
   return (
     <div className="dashboard-wrapper">
-      <h1 className="dashboard-title">Manager Dashboard</h1>
+      <h1 className="dashboard-title">Staff Dashboard</h1>
       <div className="key-metrics-container">
         <div className="key-metric">
-          <h2>Total Orders:</h2>
-          <p>{orderCount}</p>
+          <h2>Total Items:</h2>
+          <p>{itemCount}</p>
         </div>
         <div className="key-metric">
           <h2>Total Sales:</h2>
           <p>{salesCount}</p>
         </div>
-        <div className="key-metric">
-          <h2>Total Items:</h2>
-          <p>{itemCount}</p>
-        </div>
       </div>
       <div className="button-container">
-        <Link to="/manager-dashboard/inventory-management">
+        <Link to="/staff-dashboard/inventory-management">
           <button className="dashboard-button">Inventory Management</button>
         </Link>
-        <Link to="/manager-dashboard/order-management">
-          <button className="dashboard-button">Order Management</button>
-        </Link>
-        <Link to="/manager-dashboard/sales-tracking">
-          <button className="dashboard-button">Sales Tracking</button>
+        <Link to="/staff-dashboard/record-sale">
+          <button className="dashboard-button">Record Sale</button>
         </Link>
       </div>
     </div>

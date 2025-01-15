@@ -53,16 +53,16 @@ const Dashboard = () => {
         </div>
       </div>
       <div className="button-container">
-        <Link to="/user-management">
+        <Link to="/admin-dashboard/user-management">
           <button className="dashboard-button">User Management</button>
         </Link>
-        <Link to="/supplier-management">
+        <Link to="/admin-dashboard/supplier-management">
           <button className="dashboard-button">Supplier Management</button>
         </Link>
-        <Link to="/inventory-management">
+        <Link to="/admin-dashboard/inventory-management">
           <button className="dashboard-button">Inventory Management</button>
         </Link>
-        <Link to="/report-generation">
+        <Link to="/admin-dashboard/report-generation">
           <button className="dashboard-button">Report Generation</button>
         </Link>
       </div>

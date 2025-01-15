@@ -5,7 +5,6 @@ import './ReportsAndAnalytics.css';
 const ReportsAndAnalytics = () => {
   const [salesReport, setSalesReport] = useState([]);
   const [stockReport, setStockReport] = useState([]);
-  const [inventoryItems, setInventoryItems] = useState({});
 
   useEffect(() => {
     const fetchSalesReport = async () => {
@@ -26,22 +25,8 @@ const ReportsAndAnalytics = () => {
       }
     };
 
-    const fetchInventoryItems = async () => {
-      try {
-        const response = await axios.get('/api/inventory/items');
-        const items = {};
-        response.data.forEach((item) => {
-          items[item._id] = item;
-        });
-        setInventoryItems(items);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
     fetchSalesReport();
     fetchStockReport();
-    fetchInventoryItems();
   }, []);
 
   return (
@@ -60,7 +45,7 @@ const ReportsAndAnalytics = () => {
         <tbody>
           {salesReport.map((sale) => (
             <tr key={sale._id}>
-              <td>{inventoryItems[sale.inventoryItemId] ? inventoryItems[sale.inventoryItemId].name : 'N/A'}</td>
+              <td>{sale.itemId ? sale.itemId.name : (sale.inventoryItemId ? sale.inventoryItemId.name : 'N/A')}</td>
               <td>{sale.quantity}</td>
               <td>{sale.totalPrice}</td>
               <td>{sale.date}</td>

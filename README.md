@@ -4,7 +4,7 @@
 ----------------------------------------------------------------
 
 #### To run this project 
-#### FOrk the project 
+#### Fork the project 
 ```
 git clone https://github.com/pawanxcaliber/Inventory_Management_System.git
 ```

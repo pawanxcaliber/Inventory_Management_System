@@ -1,6 +1,6 @@
 # Inventory Management System 
 ----------------------------------------------------------------
-### This is full-stack web base project achived with MERN stack 
+### This is full-stack web based project achieved with MERN stack 
 ----------------------------------------------------------------
 
 #### To run this project 

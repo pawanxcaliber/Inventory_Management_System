@@ -4,12 +4,16 @@
 ----------------------------------------------------------------
 
 #### To run this project 
+----------------------------------------------------------------
 #### Fork the project 
 ```
 git clone https://github.com/pawanxcaliber/Inventory_Management_System.git
 ```
+----------------------------------------------------------------
 #### The project repository consists of frontend and Backend
+
 #### Change the .env which points to your Mangodb Cluster and Database
+
 #### To run Backend ....
 ```
 cd Backend

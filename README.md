@@ -27,5 +27,5 @@ cd frontend
 npm start
 ```
 
-#### All dependencies will be installed through package.json apart from from few dependecies like dcrupt etc
+#### All dependencies will be installed through package.json apart from from few dependecies like decrypt etc
 

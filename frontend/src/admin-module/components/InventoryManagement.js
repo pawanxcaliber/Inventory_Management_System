@@ -15,6 +15,8 @@ const InventoryManagement = () => {
     quantity: 0,
     price: 0,
   });
+  const [editing, setEditing] = useState(false);
+  const [itemId, setItemId] = useState('');
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -28,7 +30,7 @@ const InventoryManagement = () => {
 
     const fetchSuppliers = async () => {
       try {
-        const response = await axios.get('/api/suppliers'); // Modified API endpoint
+        const response = await axios.get('/api/suppliers'); 
         setSuppliers(response.data);
       } catch (error) {
         console.error(error);
@@ -63,7 +65,14 @@ const InventoryManagement = () => {
   const handleCreateItem = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post('/api/inventory/items', newItem);
+      const response = await axios.post('/api/inventory/items', {
+        name: newItem.name,
+        description: newItem.description,
+        category: newItem.category,
+        supplier: newItem.supplier,
+        quantity: newItem.quantity,
+        price: newItem.price,
+      });
       setItems([...items, response.data]);
       setNewItem({
         name: '',
@@ -77,6 +86,64 @@ const InventoryManagement = () => {
       console.error(error);
     }
   };
+
+  const handleUpdateItem = async (event) => {
+    event.preventDefault();
+    try {
+      const category = categories.find((category) => category.name === newItem.category);
+      const supplier = suppliers.find((supplier) => supplier.name === newItem.supplier);
+      if (!category || !supplier) {
+        console.error('Category or supplier not found');
+        return;
+      }
+      const categoryId = category._id;
+      const supplierId = supplier._id;
+      const response = await axios.put(`/api/inventory/items/${itemId}`, {
+        name: newItem.name,
+        description: newItem.description,
+        category: categoryId,
+        supplier: supplierId,
+        quantity: newItem.quantity,
+        price: newItem.price,
+      });
+      const updatedItems = items.map((item) => item._id === itemId ? response.data : item);
+      setItems(updatedItems);
+      setNewItem({
+        name: '',
+        description: '',
+        category: '',
+        supplier: '',
+        quantity: 0,
+        price: 0,
+      });
+      setEditing(false);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const handleDeleteItem = async (itemId) => {
+    try {
+      const response = await axios.delete(`/api/inventory/items/${itemId}`);
+      const updatedItems = items.filter((item) => item._id !== itemId);
+      setItems(updatedItems);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const handleEditItem = (item) => {
+    setEditing(true);
+    setItemId(item._id);
+    setNewItem({
+      name: item.name,
+      description: item.description,
+      category: item.category.name,
+      supplier: item.supplier.name,
+      quantity: item.quantity,
+      price: item.price,
+    });
+  };
   return (
     <div className="inventory-management-container">
       <h1 className="inventory-management-title">Inventory Management</h1>
@@ -89,7 +156,7 @@ const InventoryManagement = () => {
         <button type="submit">Create</button>
       </form>
       <h2>Create Item</h2>
-      <form className="create-item-form" onSubmit={handleCreateItem}>
+      <form className="create-item-form" onSubmit={editing ? handleUpdateItem : handleCreateItem}>
         <label>
           Item Name:
           <input type="text" value={newItem.name} onChange={(event) => setNewItem({ ...newItem, name: event.target.value })} />
@@ -130,7 +197,7 @@ const InventoryManagement = () => {
           <input type="number" step="0.01" value={newItem.price} onChange={(event) => setNewItem({ ...newItem, price: event.target.valueAsNumber })} />
         </label>
         <br />
-        <button type="submit">Create</button>
+        <button type="submit">{editing ? 'Update' : 'Create'}</button>
       </form>
       <h2>Categories</h2>
       <ul className="categories-list">
@@ -147,7 +214,11 @@ const InventoryManagement = () => {
       <h2>Items</h2>
       <ul className="items-list">
         {items.map((item) => (
-          <li key={item._id}>{item.name}</li>
+          <li key={item._id}>
+            {item.name}
+            <button onClick={() => handleEditItem(item)}>Edit</button>
+            <button onClick={() => handleDeleteItem(item._id)}>Delete</button>
+          </li>
         ))}
       </ul>
     </div>

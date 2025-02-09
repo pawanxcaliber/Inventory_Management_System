@@ -43,8 +43,10 @@
 }
 
 .dashboard-button {
-  width: 45%;
-  height: 40px;
+  flex-basis: 80%;
+  width: 80%;
+  flex-grow: 1; /* Add this line */
+  height: 60px;
   margin-bottom: 10px;
   padding: 10px;
   border: none;

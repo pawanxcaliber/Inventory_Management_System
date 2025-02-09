@@ -9,7 +9,7 @@
 
 #### To run Backend ....
 ```
-cd Backenf
+cd Backend
 ```
 #### Pointing server.js 
 ```

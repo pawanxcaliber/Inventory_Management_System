@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import './Dashboard.css';
+import './Dashboard.css'; // Imports the shared Dashboard.css
 
 const Dashboard = () => {
   const [itemCount, setItemCount] = useState(0);
@@ -10,15 +10,18 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchCounts = async () => {
       try {
-        const responses = await Promise.all([
-          axios.get('/api/inventory/items'),
-          axios.get('/manager/sales/get'),
+        const [itemsResponse, salesResponse] = await Promise.all([
+          axios.get('/api/inventory/items'), // Assuming this endpoint returns an array of items
+          axios.get('/manager/sales/get'), // Assuming this endpoint returns an array of sales (can be shared endpoint)
         ]);
 
-        setItemCount(responses[0].data.length);
-        setSalesCount(responses[1].data.length);
+        setItemCount(itemsResponse.data.length);
+        setSalesCount(salesResponse.data.length);
       } catch (error) {
-        console.error(error);
+        console.error('Error fetching staff dashboard counts:', error);
+        // Optionally set counts to 0 or display an error message on UI
+        setItemCount(0);
+        setSalesCount(0);
       }
     };
 
@@ -39,11 +42,17 @@ const Dashboard = () => {
         </div>
       </div>
       <div className="button-container">
-        <Link to="/staff-dashboard/inventory-management">
-          <button className="dashboard-button">Inventory Management</button>
+        <Link
+          to="/staff-dashboard/inventory-management"
+          className="dashboard-button"
+        >
+          Inventory Management
         </Link>
-        <Link to="/staff-dashboard/record-sale">
-          <button className="dashboard-button">Record Sale</button>
+        <Link
+          to="/staff-dashboard/record-sale"
+          className="dashboard-button"
+        >
+          Record Sale
         </Link>
       </div>
     </div>

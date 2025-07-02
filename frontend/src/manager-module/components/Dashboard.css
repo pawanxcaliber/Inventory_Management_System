@@ -1,58 +1,175 @@
+/* Dashboard Container */
 .dashboard-wrapper {
-    max-width: 1000px;
-    margin: 40px auto;
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: #FFFFFF;
+  border: 1px solid #DDE3EC;
+  border-radius: 8px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+  color: #1A202C;
+}
+
+/* Dashboard Title */
+.dashboard-title {
+  font-weight: 700;
+  font-size: 28px;
+  margin-bottom: 35px;
+  color: #1A202C;
+  text-align: center;
+  letter-spacing: -0.5px;
+}
+
+/* Key Metrics Section */
+.key-metrics-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  margin-bottom: 40px;
+}
+
+/* Individual Key Metric Card */
+.key-metric {
+  background-color: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 8px;
+  padding: 25px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+}
+
+.key-metric:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.key-metric h2 {
+  font-weight: 600;
+  font-size: 16px;
+  color: #4A5568;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  line-height: 1.3;
+}
+
+.key-metric p {
+  font-weight: 700;
+  font-size: 40px;
+  color: #2563EB;
+  margin: 0;
+  line-height: 1;
+}
+
+/* Button Container */
+.button-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  margin-top: 40px;
+}
+
+/* Dashboard Button Styling (consistent blue gradient) */
+.dashboard-button {
+  width: 100%;
+  padding: 15px 20px;
+  border: none;
+  border-radius: 5px;
+  background: linear-gradient(to right, #2563EB, #1D4ED8);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.25s ease-in-out, transform 0.15s ease-in-out, box-shadow 0.25s ease-in-out;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 4px 15px rgba(37, 99, 235, 0.2);
+  text-decoration: none;
+
+  /* FIX FOR TEXT WRAPPING & CUTOFF */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dashboard-button:hover {
+  background: linear-gradient(to right, #1D4ED8, #1E40AF);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.3);
+}
+
+.dashboard-button:active {
+  background: linear-gradient(to right, #1E40AF, #1E3A8A);
+  transform: translateY(0px);
+  box-shadow: 0 2px 10px rgba(37, 99, 235, 0.2);
+}
+
+/* Arrow icon for Dashboard buttons */
+.dashboard-button::after {
+  content: '❯';
+  font-size: 1.1em;
+  line-height: 1;
+  opacity: 0.9;
+  transition: transform 0.2s ease-in-out;
+  margin-left: 5px;
+}
+
+.dashboard-button:hover::after {
+    transform: translateX(5px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .dashboard-wrapper {
+    margin: 20px;
     padding: 20px;
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
-  
   .dashboard-title {
-    font-weight: bold;
     font-size: 24px;
-    margin-bottom: 10px;
+    margin-bottom: 25px;
   }
-  
   .key-metrics-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    grid-template-columns: 1fr;
+    gap: 20px;
   }
-  
   .key-metric {
-    width: 45%;
-    margin-bottom: 20px;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
   }
-  
   .key-metric h2 {
-    font-weight: bold;
-    font-size: 18px;
-    margin-bottom: 5px;
+    font-size: 15px;
   }
-  
+  .key-metric p {
+    font-size: 36px;
+  }
   .button-container {
-    margin-top: 20px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    grid-template-columns: 1fr;
+    gap: 15px;
   }
-  
   .dashboard-button {
-    width: 45%;
-    height: 40px;
-    margin-bottom: 10px;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    background-color: #4CAF50;
-    color: #fff;
-    cursor: pointer;
+    padding: 14px 18px;
+    font-size: 15px;
   }
-  
-  .dashboard-button:hover {
-    background-color: #3e8e41;
+}
+
+@media (max-width: 480px) {
+  .dashboard-wrapper {
+    padding: 15px;
   }
+  .dashboard-title {
+    font-size: 22px;
+    margin-bottom: 20px;
+  }
+  .key-metric p {
+    font-size: 32px;
+  }
+}

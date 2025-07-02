@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import './Dashboard.css';
+import './Dashboard.css'; // Imports the shared Dashboard.css
 
 const Dashboard = () => {
   const [userCount, setUserCount] = useState(0);
@@ -12,19 +12,29 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchCounts = async () => {
       try {
-        const responses = await Promise.all([
-          axios.get('/api/users/all'),
-          axios.get('/api/suppliers'),
-          axios.get('/api/inventory/items'),
-          axios.get('/api/inventory/categories'),
+        const [
+          usersResponse,
+          suppliersResponse,
+          itemsResponse,
+          categoriesResponse,
+        ] = await Promise.all([
+          axios.get('/api/users'), // Assuming an endpoint for total users
+          axios.get('/api/suppliers'), // Assuming an endpoint for total suppliers
+          axios.get('/api/inventory/items'), // Assuming an endpoint for total items
+          axios.get('/api/inventory/categories'), // Assuming an endpoint for total categories
         ]);
 
-        setUserCount(responses[0].data.length);
-        setSupplierCount(responses[1].data.length);
-        setItemCount(responses[2].data.length);
-        setCategoryCount(responses[3].data.length);
+        setUserCount(usersResponse.data.length);
+        setSupplierCount(suppliersResponse.data.length);
+        setItemCount(itemsResponse.data.length);
+        setCategoryCount(categoriesResponse.data.length);
       } catch (error) {
-        console.error(error);
+        console.error('Error fetching admin dashboard counts:', error);
+        // Optionally set counts to 0 or display an error message on UI
+        setUserCount(0);
+        setSupplierCount(0);
+        setItemCount(0);
+        setCategoryCount(0);
       }
     };
 
@@ -53,17 +63,17 @@ const Dashboard = () => {
         </div>
       </div>
       <div className="button-container">
-        <Link to="/admin-dashboard/user-management">
-          <button className="dashboard-button">User Management</button>
+        <Link to="/admin-dashboard/user-management" className="dashboard-button">
+          User Management
         </Link>
-        <Link to="/admin-dashboard/supplier-management">
-          <button className="dashboard-button">Supplier Management</button>
+        <Link to="/admin-dashboard/supplier-management" className="dashboard-button">
+          Supplier Management
         </Link>
-        <Link to="/admin-dashboard/inventory-management">
-          <button className="dashboard-button">Inventory Management</button>
+        <Link to="/admin-dashboard/inventory-management" className="dashboard-button">
+          Inventory Management
         </Link>
-        <Link to="/admin-dashboard/report-generation">
-          <button className="dashboard-button">Report Generation</button>
+        <Link to="/admin-dashboard/report-generation" className="dashboard-button">
+          Report Generation
         </Link>
       </div>
     </div>

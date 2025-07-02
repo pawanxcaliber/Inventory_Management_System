@@ -1,194 +1,87 @@
 .supplier-management-container {
-  max-width: 800px;
-  margin: 40px auto;
-  padding: 30px; /* Increased padding for better spacing */
-  background-color: #FFFFFF; /* Consistent white background */
-  border: 1px solid #DDE3EC; /* Consistent border color */
-  border-radius: 8px; /* Slightly more rounded corners */
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08); /* Consistent shadow */
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
-  color: #1A202C;
-}
-
-.supplier-management-title {
-  font-weight: 700; /* Bolder title */
-  font-size: 28px; /* Larger title */
-  margin-bottom: 30px; /* More space below title */
-  text-align: center; /* Center title */
-  color: #1A202C; /* Consistent title color */
-}
-
-.supplier-management-form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px; /* Spacing between form elements */
-  margin-bottom: 40px; /* Space before the supplier list */
-  padding: 20px; /* Padding inside the form box */
-  border: 1px solid #E2E8F0; /* Subtle border around forms */
-  border-radius: 6px;
-  background-color: #F9FAFB; /* Light background for forms */
-}
-
-.supplier-management-form label {
-  display: flex; /* Make label and input align nicely */
-  flex-direction: column; /* Stack label text and input */
-  font-weight: 600; /* Bold label text */
-  color: #4A5568; /* Consistent label color */
-  font-size: 14px;
-}
-
-.supplier-management-form input[type="text"],
-.supplier-management-form input[type="email"] {
-  width: 100%; /* Make inputs fill available width */
-  height: 44px; /* Standardized height for inputs */
-  padding: 10px 12px;
-  border: 1px solid #DDE3EC; /* Consistent border */
-  border-radius: 5px; /* Rounded corners for inputs */
-  font-size: 16px;
-  margin-top: 6px; /* Space between label text and input field */
-  box-sizing: border-box; /* Include padding in width calculation */
-  background-color: #FFFFFF; /* White background for inputs */
-  color: #1A202C;
-}
-
-.supplier-management-form input:focus {
-  border-color: #2563EB; /* Highlight on focus */
-  outline: none;
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2); /* Soft glow on focus */
-}
-
-.supplier-management-form button[type="submit"] {
-  width: 100%;
-  height: 48px; /* Slightly taller for prominence */
-  background: linear-gradient(to right, #2563EB, #1D4ED8); /* Blue gradient */
-  color: #fff;
-  padding: 12px 20px;
-  border: none;
-  border-radius: 5px;
-  font-size: 17px; /* Slightly larger font */
-  font-weight: 600;
-  cursor: pointer;
-  transition: background 0.25s ease-in-out, transform 0.15s ease-in-out, box-shadow 0.25s ease-in-out;
-  letter-spacing: 0.5px;
-  box-shadow: 0 4px 15px rgba(37, 99, 235, 0.2);
-}
-
-.supplier-management-form button[type="submit"]:hover {
-  background: linear-gradient(to right, #1D4ED8, #1E40AF);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.3);
-}
-
-.supplier-management-form button[type="submit"]:active {
-  background: linear-gradient(to right, #1E40AF, #1E3A8A);
-  transform: translateY(0px);
-  box-shadow: 0 2px 10px rgba(37, 99, 235, 0.2);
-}
-
-.supplier-management-subtitle {
-  font-weight: 700; /* Bolder subtitle */
-  font-size: 22px; /* Larger subtitle */
-  margin-top: 30px; /* Space above subtitle */
-  margin-bottom: 20px;
-  color: #1A202C;
-  text-align: center; /* Center subtitle */
-}
-
-.supplier-management-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  border: 1px solid #DDE3EC; /* Border around the list */
-  border-radius: 5px;
-  overflow: hidden; /* Ensures border-radius applies nicely */
-}
-
-.supplier-management-list-item {
-  display: flex; /* Use flexbox for list item layout */
-  justify-content: space-between; /* Space out content and buttons */
-  align-items: center; /* Vertically align content */
-  padding: 15px 20px; /* More padding for list items */
-  border-bottom: 1px solid #E2E8F0; /* Lighter separator */
-  background-color: #FFFFFF; /* White background for items */
-}
-
-.supplier-management-list-item:last-child {
-  border-bottom: none; /* No border on the last item */
-}
-
-.supplier-management-list-item span {
-  font-weight: 500; /* Slightly less bold than before, more readable */
-  color: #2D3748;
-  flex-grow: 1; /* Allow text to take up available space */
-  margin-right: 15px; /* Space between text and buttons */
-  word-break: break-word; /* Prevents long text from overflowing */
-}
-
-.supplier-management-list-item button {
-  padding: 8px 15px; /* Adjusted padding for smaller buttons */
-  border: none;
-  border-radius: 4px; /* Slightly smaller border-radius for action buttons */
-  cursor: pointer;
-  font-size: 14px;
-  font-weight: 600;
-  transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
-  min-width: 70px; /* Give buttons a consistent minimum width */
-}
-
-.supplier-management-list-item button:first-of-type { /* Edit button */
-  background-color: #3182CE; /* A blue color for edit */
-  color: #fff;
-  margin-right: 10px; /* Space between edit and delete */
-  box-shadow: 0 2px 5px rgba(49, 130, 206, 0.2);
-}
-
-.supplier-management-list-item button:first-of-type:hover {
-  background-color: #2B6CB0;
-  transform: translateY(-1px);
-  box-shadow: 0 3px 6px rgba(49, 130, 206, 0.3);
-}
-
-.supplier-management-list-item button:last-of-type { /* Delete button */
-  background-color: #E53E3E; /* A red color for delete */
-  color: #fff;
-  box-shadow: 0 2px 5px rgba(229, 62, 62, 0.2);
-}
-
-.supplier-management-list-item button:last-of-type:hover {
-  background-color: #C53030;
-  transform: translateY(-1px);
-  box-shadow: 0 3px 6px rgba(229, 62, 62, 0.3);
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .supplier-management-container {
-    margin: 20px;
+    max-width: 800px;
+    margin: 40px auto;
     padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
+  
   .supplier-management-title {
+    font-weight: bold;
     font-size: 24px;
+    margin-bottom: 10px;
   }
+  
+  .supplier-management-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .supplier-management-form label {
+    margin-bottom: 10px;
+  }
+  
+  .supplier-management-form input[type="text"],
+  .supplier-management-form input[type="email"],
+  .supplier-management-form input[type="password"] {
+    width: 100%;
+    height: 40px;
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+  }
+  
+  .supplier-management-form button[type="submit"] {
+    width: 100%;
+    height: 40px;
+    background-color: #4CAF50;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .supplier-management-form button[type="submit"]:hover {
+    background-color: #3e8e41;
+  }
+  
   .supplier-management-subtitle {
+    font-weight: bold;
     font-size: 18px;
+    margin-bottom: 10px;
   }
-}
-
-@media (max-width: 480px) {
-  .supplier-management-container {
-    padding: 15px;
+  
+  .supplier-management-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
   }
+  
   .supplier-management-list-item {
-    flex-direction: column; /* Stack name/email and buttons on small screens */
-    align-items: flex-start;
-    gap: 10px;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
   }
+  
+  .supplier-management-list-item:last-child {
+    border-bottom: none;
+  }
+  
   .supplier-management-list-item span {
-    margin-right: 0; /* Remove right margin when stacked */
-    margin-bottom: 5px;
+    font-weight: bold;
   }
+  
   .supplier-management-list-item button {
-    width: 100%; /* Buttons take full width when stacked */
-    margin-right: 0 !important; /* Override inline margin */
+    background-color: #4CAF50;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
   }
-}
+  
+  .supplier-management-list-item button:hover {
+    background-color: #3e8e41;
+  }

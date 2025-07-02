@@ -1,69 +1,209 @@
 .inventory-management-container {
   max-width: 800px;
   margin: 40px auto;
-  padding: 20px;
-  background-color: #f9f9f9;
-  border: 1px solid #ddd;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 30px; /* Increased padding for better spacing */
+  background-color: #FFFFFF; /* Changed to white for consistency */
+  border: 1px solid #DDE3EC; /* Consistent border color */
+  border-radius: 8px; /* Slightly more rounded corners */
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08); /* Consistent shadow */
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+  color: #1A202C;
 }
 
 .inventory-management-title {
-  text-align: center;
-  margin-bottom: 20px;
+  font-weight: 700; /* Bolder title */
+  font-size: 28px; /* Larger title */
+  margin-bottom: 30px; /* More space below title */
+  text-align: center; /* Center title */
+  color: #1A202C; /* Consistent title color */
+}
+
+h2 {
+  font-weight: 600; /* Bolder section titles */
+  font-size: 22px; /* Larger section titles */
+  margin-top: 30px; /* Space above section titles */
+  margin-bottom: 20px; /* Space below section titles */
+  color: #2D3748;
+  text-align: center; /* Center section titles for better layout */
 }
 
 .create-category-form,
 .create-item-form {
-  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Spacing between form elements */
+  margin-bottom: 40px; /* Space after forms */
+  padding: 20px; /* Padding inside form boxes */
+  border: 1px solid #E2E8F0; /* Subtle border around forms */
+  border-radius: 6px;
+  background-color: #F9FAFB; /* Light background for forms */
 }
 
 .create-category-form label,
 .create-item-form label {
-  display: block;
-  margin-bottom: 10px;
+  display: flex; /* Make label and input align nicely */
+  flex-direction: column; /* Stack label text and input */
+  font-weight: 600; /* Bold label text */
+  color: #4A5568; /* Consistent label color */
+  font-size: 14px;
 }
 
 .create-category-form input,
 .create-item-form input,
 .create-item-form select {
-  width: 100%;
-  height: 40px;
-  margin-bottom: 20px;
-  padding: 10px;
-  border: 1px solid #ccc;
+  width: 100%; /* Make inputs and selects fill available width */
+  height: 44px; /* Standardized height for inputs */
+  padding: 10px 12px;
+  border: 1px solid #DDE3EC; /* Consistent border */
+  border-radius: 5px; /* Rounded corners for inputs */
+  font-size: 16px;
+  margin-top: 6px; /* Space between label text and input field */
+  box-sizing: border-box; /* Include padding in width calculation */
+  background-color: #FFFFFF; /* White background for inputs */
+  color: #1A202C;
+}
+
+.create-category-form input:focus,
+.create-item-form input:focus,
+.create-item-form select:focus {
+  border-color: #2563EB; /* Highlight on focus */
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2); /* Soft glow on focus */
 }
 
 .create-category-form button,
 .create-item-form button {
   width: 100%;
-  height: 40px;
-  background-color: #4CAF50;
+  height: 48px; /* Slightly taller for prominence */
+  background: linear-gradient(to right, #2563EB, #1D4ED8); /* Blue gradient */
   color: #fff;
-  padding: 10px;
+  padding: 12px 20px;
   border: none;
   border-radius: 5px;
+  font-size: 17px; /* Slightly larger font */
+  font-weight: 600;
   cursor: pointer;
+  transition: background 0.25s ease-in-out, transform 0.15s ease-in-out, box-shadow 0.25s ease-in-out;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 15px rgba(37, 99, 235, 0.2);
 }
 
 .create-category-form button:hover,
 .create-item-form button:hover {
-  background-color: #3e8e41;
+  background: linear-gradient(to right, #1D4ED8, #1E40AF);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.3);
+}
+
+.create-category-form button:active,
+.create-item-form button:active {
+  background: linear-gradient(to right, #1E40AF, #1E3A8A);
+  transform: translateY(0px);
+  box-shadow: 0 2px 10px rgba(37, 99, 235, 0.2);
 }
 
 .categories-list,
+.suppliers-list, /* Added style for suppliers list */
 .items-list {
   list-style: none;
   padding: 0;
   margin: 0;
+  border: 1px solid #DDE3EC; /* Border around the list */
+  border-radius: 5px;
+  overflow: hidden; /* Ensures border-radius applies nicely */
+  margin-bottom: 30px; /* Space after each list */
 }
 
 .categories-list li,
+.suppliers-list li, /* Style for suppliers list items */
 .items-list li {
-  padding: 10px;
-  border-bottom: 1px solid #ccc;
+  display: flex; /* Use flexbox for list item layout */
+  justify-content: space-between; /* Space out content and buttons */
+  align-items: center; /* Vertically align content */
+  padding: 15px 20px; /* More padding for list items */
+  border-bottom: 1px solid #E2E8F0; /* Lighter separator */
+  background-color: #FFFFFF; /* White background for items */
+  font-weight: 500;
+  color: #2D3748;
 }
 
 .categories-list li:last-child,
+.suppliers-list li:last-child,
 .items-list li:last-child {
-  border-bottom: none;
+  border-bottom: none; /* No border on the last item */
+}
+
+/* Specific styling for item list buttons */
+.items-list li button {
+  padding: 8px 15px; /* Adjusted padding for smaller buttons */
+  border: none;
+  border-radius: 4px; /* Slightly smaller border-radius for action buttons */
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+  min-width: 70px; /* Give buttons a consistent minimum width */
+}
+
+.items-list li button:first-of-type { /* Edit button */
+  background-color: #3182CE; /* A blue color for edit */
+  color: #fff;
+  margin-right: 10px; /* Space between edit and delete */
+  box-shadow: 0 2px 5px rgba(49, 130, 206, 0.2);
+}
+
+.items-list li button:first-of-type:hover {
+  background-color: #2B6CB0;
+  transform: translateY(-1px);
+  box-shadow: 0 3px 6px rgba(49, 130, 206, 0.3);
+}
+
+.items-list li button:last-of-type { /* Delete button */
+  background-color: #E53E3E; /* A red color for delete */
+  color: #fff;
+  box-shadow: 0 2px 5px rgba(229, 62, 62, 0.2);
+}
+
+.items-list li button:last-of-type:hover {
+  background-color: #C53030;
+  transform: translateY(-1px);
+  box-shadow: 0 3px 6px rgba(229, 62, 62, 0.3);
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .inventory-management-container {
+    margin: 20px;
+    padding: 20px;
+  }
+  h2 {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .inventory-management-container {
+    padding: 15px;
+  }
+  .inventory-management-title {
+    font-size: 24px;
+  }
+  .create-category-form,
+  .create-item-form {
+    padding: 15px;
+  }
+  .items-list li {
+    flex-direction: column; /* Stack item name/description and buttons on small screens */
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .items-list li span { /* If you add a span around item name/description */
+    margin-right: 0;
+    margin-bottom: 5px;
+  }
+  .items-list li button {
+    width: 100%; /* Buttons take full width when stacked */
+    margin-right: 0 !important;
+  }
 }

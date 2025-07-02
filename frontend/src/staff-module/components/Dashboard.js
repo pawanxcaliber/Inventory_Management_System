@@ -1,24 +1,27 @@
+// src/staff-module/components/StaffDashboard.jsx
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import './Dashboard.css';
+import './Dashboard.css'; // reuse the same Dashboard.css
 
-const Dashboard = () => {
+const StaffDashboard = () => {
   const [itemCount, setItemCount] = useState(0);
   const [salesCount, setSalesCount] = useState(0);
 
   useEffect(() => {
     const fetchCounts = async () => {
       try {
-        const responses = await Promise.all([
+        const [itemsRes, salesRes] = await Promise.all([
           axios.get('/api/inventory/items'),
           axios.get('/manager/sales/get'),
         ]);
 
-        setItemCount(responses[0].data.length);
-        setSalesCount(responses[1].data.length);
-      } catch (error) {
-        console.error(error);
+        setItemCount(Array.isArray(itemsRes.data) ? itemsRes.data.length : 0);
+        setSalesCount(Array.isArray(salesRes.data) ? salesRes.data.length : 0);
+      } catch (err) {
+        console.error('Error fetching staff dashboard counts:', err);
+        setItemCount(0);
+        setSalesCount(0);
       }
     };
 
@@ -28,6 +31,7 @@ const Dashboard = () => {
   return (
     <div className="dashboard-wrapper">
       <h1 className="dashboard-title">Staff Dashboard</h1>
+
       <div className="key-metrics-container">
         <div className="key-metric">
           <h2>Total Items:</h2>
@@ -38,16 +42,24 @@ const Dashboard = () => {
           <p>{salesCount}</p>
         </div>
       </div>
+
       <div className="button-container">
-        <Link to="/staff-dashboard/inventory-management">
-          <button className="dashboard-button">Inventory Management</button>
+        <Link
+          to="/staff-dashboard/inventory-management"
+          className="dashboard-button"
+        >
+          Inventory Management
         </Link>
-        <Link to="/staff-dashboard/record-sale">
-          <button className="dashboard-button">Record Sale</button>
+
+        <Link
+          to="/staff-dashboard/record-sale"
+          className="dashboard-button"
+        >
+          Record Sale
         </Link>
       </div>
     </div>
   );
 };
 
-export default Dashboard;
+export default StaffDashboard;
